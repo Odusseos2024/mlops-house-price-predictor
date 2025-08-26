@@ -23,6 +23,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
 # Create a two-column layout
 col1, col2 = st.columns(2, gap="large")
 
@@ -32,32 +33,33 @@ with col1:
 
     # Square Footage slider
     st.markdown(f"<p><strong>Square Footage:</strong> <span id='sqft-value'></span></p>", unsafe_allow_html=True)
-    sqft = st.slider("", 500, 5000, 1500, 50, label_visibility="collapsed", key="sqft")
+    sqft = st.slider("Square Footage", 500, 5000, 1500, 50, label_visibility="collapsed", key="sqft")
     st.markdown(f"<script>document.getElementById('sqft-value').innerText = '{sqft} sq ft';</script>", unsafe_allow_html=True)
 
     # Bedrooms and Bathrooms in two columns
     bed_col, bath_col = st.columns(2)
     with bed_col:
-        st.markdown("<p><strong>Bedrooms</strong></p>", unsafe_allow_html=True)
-        bedrooms = st.selectbox("", options=[1, 2, 3, 4, 5, 6], index=2, label_visibility="collapsed")
+        st.markdown("<p><b>Bedrooms</b></p>", unsafe_allow_html=True)
+        bedrooms = st.selectbox("Number of Bedrooms", options=[1, 2, 3, 4, 5, 6], index=2, label_visibility="collapsed", key="bedrooms")
 
     with bath_col:
-        st.markdown("<p><strong>Bathrooms</strong></p>", unsafe_allow_html=True)
-        bathrooms = st.selectbox("", options=[1, 1.5, 2, 2.5, 3, 3.5, 4], index=2, label_visibility="collapsed")
+        st.markdown("<p><b>Bathrooms</b></p>", unsafe_allow_html=True)
+        bathrooms = st.selectbox("Number of Bathrooms", options=[1, 1.5, 2, 2.5, 3, 3.5, 4], index=2, label_visibility="collapsed", key="bathrooms")
 
     # Location dropdown
-    st.markdown("<p><strong>Location</strong></p>", unsafe_allow_html=True)
-    location = st.selectbox("", options=["Urban", "Suburban", "Rural", "Urban", "Waterfront", "Mountain"], index=1, label_visibility="collapsed")
+    st.markdown("<p><b>Location</b></p>", unsafe_allow_html=True)
+    location = st.selectbox("Location", options=["Urban", "Suburban", "Rural", "Waterfront", "Mountain"], index=1, label_visibility="collapsed", key="location")
 
     # Year Built slider
-    st.markdown(f"<p><strong>Year Built:</strong> <span id='year-value'></span></p>", unsafe_allow_html=True)
-    year_built = st.slider("", 1900, 2025, 2000, 1, label_visibility="collapsed", key="year")
+    st.markdown(f"<p><b>Year Built:</b> <span id='year-value'></span></p>", unsafe_allow_html=True)
+    year_built = st.slider("Year Built", 1900, 2025, 2000, 1, label_visibility="collapsed", key="year")
     st.markdown(f"<script>document.getElementById('year-value').innerText = '{year_built}';</script>", unsafe_allow_html=True)
 
     # Predict button
     predict_button = st.button("Predict Price", use_container_width=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 # Results section
 with col2:
