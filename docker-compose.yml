@@ -1,0 +1,18 @@
+services:
+  fastapi:
+    image: odusseos2024/fastapi:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 58000:8000
+    
+  streamlit:
+    image: odusseos2024/streamlit:dev
+    build:
+      context: ./streamlit_app
+      dockerfile: Dockerfile
+    ports:
+      - 58501:8501
+    environment:
+      API_URL: http://192.168.56.101:58000
