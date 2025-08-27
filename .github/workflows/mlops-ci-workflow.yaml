@@ -72,7 +72,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: odusseos2024/fastapi:${{ github.sha }}
+          # tags: odusseos2024/fastapi:${{ github.sha }}
+          tags: odusseos2024/fastapi:latest
           context: "."
           file: "Dockerfile"
 
